@@ -2,7 +2,12 @@
 
 Full-stack restaurant website built with Next.js 14, TypeScript, Prisma, and NextAuth.
 
+## Live Demo
+
+**Website:** [https://bella-vista-restaurant-theta.vercel.app](https://bella-vista-restaurant-theta.vercel.app)
+
 ## Features
+
 - 🍕 Browse menu with cart functionality
 - 🛒 Place orders online
 - 📅 Make table reservations
@@ -11,22 +16,61 @@ Full-stack restaurant website built with Next.js 14, TypeScript, Prisma, and Nex
 - 📱 Responsive design
 
 ## Tech Stack
+
 - Next.js 14
 - TypeScript
 - Prisma ORM
-- SQLite (development)
+- PostgreSQL (Supabase)
 - NextAuth.js
 - Tailwind CSS
+- Vercel (Deployment)
 
 ## Getting Started
 
 1. Clone the repository
+
+```bash
+git clone https://github.com/ishwarsinghnaruka/bella-vista-restaurant.git
+cd bella-vista-restaurant
+```
+
 2. Install dependencies: `npm install`
+
 3. Set up environment variables
-4. Run migrations: `npx prisma migrate dev`
-5. Seed database: `npx tsx prisma/seed.ts`
-6. Create admin: `node scripts/create-admin.js`
-7. Run development server: `npm run dev`
+
+```env
+DATABASE_URL="your-supabase-postgresql-url"
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+4. Database setup:
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+5. Run development server: `npm run dev`
 
 ## Demo Credentials
+
 Admin: admin@example.com / admin123
+
+## Project Structure
+
+```
+app/
+├── api/                 # Backend API routes
+├── admin/              # Admin dashboard
+├── components/         # Reusable components
+├── lib/               # Database & auth config
+├── menu/              # Menu pages
+├── cart/              # Shopping cart
+└── reservations/      # Booking system
+```
+
+## Developer
+
+**Ishwar Singh Naruka**  
+GitHub: [@ishwarsinghnaruka](https://github.com/ishwarsinghnaruka)
