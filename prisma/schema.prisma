@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"  // Change from "sqlite" to "postgresql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -22,7 +22,7 @@ model MenuItem {
   id          String   @id @default(cuid())
   name        String
   description String?
-  price       Float
+  price       Decimal  // Changed from Float to Decimal for PostgreSQL
   category    String
   available   Boolean  @default(true)
   createdAt   DateTime @default(now())
@@ -42,15 +42,15 @@ model Reservation {
 }
 
 model Order {
-  id          String   @id @default(cuid())
-  userId      String?
-  user        User?    @relation(fields: [userId], references: [id])
-  items       String   // JSON string of items
-  total       Float
-  status      String   @default("pending")
-  customerName String
+  id            String   @id @default(cuid())
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id])
+  items         String   // JSON string of items
+  total         Decimal  // Changed from Float to Decimal
+  status        String   @default("pending")
+  customerName  String
   customerEmail String
   customerPhone String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }

@@ -8,10 +8,17 @@ export async function GET() {
       orderBy: { category: "asc" },
     });
 
-    return NextResponse.json(menuItems);
+    // Convert Decimal to number for JSON serialization
+    const serializedItems = menuItems.map((item) => ({
+      ...item,
+      price: Number(item.price),
+    }));
+
+    return NextResponse.json(serializedItems);
   } catch (error) {
+    console.error("Menu API error:", error);
     return NextResponse.json(
-      { error: "Failed to fetch menu" },
+      { error: "Failed to fetch menu items" },
       { status: 500 }
     );
   }
